@@ -1,0 +1,17 @@
+class Solution(object):
+    def stringShift(self, s, shift):
+        n=len(shift)
+        if n==0:
+            return s
+        
+        for i in shift:
+            first= i[0]
+            second = i[1]
+            if first ==0:
+                s=s[second:] +s[:second] 
+                print(s)
+            else:
+                s=s[-1*second:] + s[:-1*second]
+                print(s)
+        return s
+              
