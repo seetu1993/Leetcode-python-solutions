@@ -1,0 +1,35 @@
+class Solution(object):
+    def threeSum(self, nums):
+        ans=[]
+        nums.sort()
+        #print(nums)
+        n = len(nums)
+        #print(n)
+        for i in range(0,n-1):
+            #print(i)
+            ele = nums[i]
+           #print(ele)
+            left=i+1
+            right = n-1
+            while left<right:
+                curr_sum = ele+nums[left]+nums[right] 
+                #print(curr_sum)
+                if curr_sum==0:
+                    ans.append([ele,nums[left],nums[right]])
+                    left = left+1
+                    right = right-1
+                elif curr_sum <0:
+                    left=left+1
+                elif curr_sum>0:
+                    right = right -1
+        
+        final_ans=[]
+        for x in ans:
+            if x not in final_ans:
+                final_ans.append(x)
+        return final_ans
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        
