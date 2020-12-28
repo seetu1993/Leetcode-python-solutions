@@ -1,0 +1,29 @@
+class Solution(object):
+    def swap(self,nums,index1,index2):
+        temp = nums[index1]
+        nums[index1] = nums[index2]
+        nums[index2] = temp
+    
+    def permute_util(self,nums,start,ans):
+        if start== len(nums)-1:
+            ans.append(nums[:])
+        for i in range(start,len(nums)):
+            self.swap(nums,start,i)
+            self.permute_util(nums,start+1,ans)
+            self.swap(nums,start,i)
+            
+    def permuteUnique(self, nums):
+        start =0
+        ans=[]
+        self.permute_util(nums,0,ans)
+        print(ans)
+        final_ans=[]
+        for x in ans:
+            if x not in final_ans:
+                final_ans.append(x)
+        return final_ans
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        
