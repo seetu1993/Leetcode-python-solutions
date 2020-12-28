@@ -23,3 +23,23 @@ class Solution(object):
         :rtype: List[str]
         """
         
+        Solution 2 : using recursion 
+        
+        class Solution(object):
+    def rec_util(self,open_p,closed_p,curr_s,ans,n):
+        if open_p==n and closed_p==n:
+            ans.append(curr_s)
+        if open_p<n:
+            self.rec_util(open_p+1,closed_p,curr_s+"(",ans,n)
+        if open_p>closed_p:
+            self.rec_util(open_p,closed_p+1,curr_s+")",ans,n)
+            
+    def generateParenthesis(self, n):
+        ans=[]
+        self.rec_util(0,0,"",ans,n)
+        return ans
+        """
+        :type n: int
+        :rtype: List[str]
+        """
+        
