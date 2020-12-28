@@ -1,0 +1,34 @@
+class Solution(object):
+    def reorderLogFiles(self, logs):
+        first=[]
+        last=[]
+        for x in logs:
+            temp = x
+            temp1=temp.split()
+            if temp1[1][0]>='0' and temp1[1][0]<='9':
+                last.append(x)
+            else:
+                n = len(temp1[0])
+                x=x[n:]+" "+temp1[0]
+                #x=x[5:]+" "+x[:4]
+                first.append(x)
+        print(first)
+        first.sort()
+        si = len(first)
+        first_final=[]
+        for x in first:
+            temp = x.split()
+            n = len(temp)
+            y = temp[n-1]
+            for j in range(0,n-1):
+                y = y + " "+temp[j]
+            first_final.append(y)
+       
+        first_final.extend(last)
+        return first_final
+        
+        """
+        :type logs: List[str]
+        :rtype: List[str]
+        """
+        
