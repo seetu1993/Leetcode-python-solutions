@@ -1,0 +1,23 @@
+class Solution(object):
+    def recur_util(self,candidates,target,start,curr,res):
+        if target < 0:
+            return 
+        if target == 0:
+            res.append(list(curr))
+        
+        for i in range(start,len(candidates)):
+            curr.append(candidates[i])
+            self.recur_util(candidates,target-candidates[i],i,curr,res)
+            curr.pop()
+    def combinationSum(self, candidates, target):
+        res=[]
+        curr=[]
+        start=0
+        self.recur_util(candidates,target,start,curr,res)
+        return res
+        """
+        :type candidates: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        
