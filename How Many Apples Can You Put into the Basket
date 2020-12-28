@@ -1,0 +1,16 @@
+class Solution(object):
+    def maxNumberOfApples(self, arr):
+        arr.sort()
+        sum_t=0
+        count=0
+        for x in arr:
+            if sum_t<5000:
+                sum_t = sum_t +x
+                if sum_t<5000:
+                    count=count+1
+        return count
+        """
+        :type arr: List[int]
+        :rtype: int
+        """
+        
