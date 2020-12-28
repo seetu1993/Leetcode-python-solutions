@@ -1,0 +1,25 @@
+class Solution(object):
+    def generateParenthesis(self, n):
+        queue=[]
+        ans=[]
+        queue.append(["",0,0])
+        
+        while len(queue)!=0:
+            temp = queue[0]
+            del queue[0]
+            curr_s = temp[0]
+            open_p = temp[1]
+            closed_p = temp[2]
+            if open_p==n and closed_p==n:
+                ans.append(curr_s)
+            if open_p <n:
+                queue.append([curr_s+"(",open_p+1,closed_p])
+            if open_p>closed_p:
+                queue.append([curr_s+")",open_p,closed_p+1])
+            
+        return ans
+        """
+        :type n: int
+        :rtype: List[str]
+        """
+        
