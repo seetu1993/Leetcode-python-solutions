@@ -1,0 +1,20 @@
+class Solution(object):
+    def uncommonFromSentences(self, A, B):
+        ans=[]
+        sen1 = (A+" " + B).split()
+        mymap={}
+        for x in sen1:
+            if x in mymap:
+                mymap[x] = mymap[x] +1
+            else:
+                mymap[x] = 1
+        for x in mymap.keys():
+            if mymap[x] > 1:
+                del mymap[x]
+        return mymap.keys()
+        """
+        :type A: str
+        :type B: str
+        :rtype: List[str]
+        """
+        
