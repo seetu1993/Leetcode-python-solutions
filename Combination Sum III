@@ -1,0 +1,21 @@
+class Solution(object):
+    def recur_util(self,start,k,n,curr,ans):
+        if k < 0 and n < 0:
+            return
+        if n == 0 and k==0:
+            ans.append(curr[:])
+        for i in range(start,10):
+            curr.append(i)
+            self.recur_util(i+1,k-1,n-i,curr,ans)
+            curr.pop()
+    def combinationSum3(self, k, n):
+        ans=[]
+        curr=[]
+        self.recur_util(1,k,n,curr,ans)
+        return ans
+        """
+        :type k: int
+        :type n: int
+        :rtype: List[List[int]]
+        """
+        
