@@ -1,0 +1,21 @@
+class Solution(object):
+    def isStrobogrammatic(self, num):
+        
+        mymap={'0':'0','1':'1','6':'9','9':'6','8':'8'}
+        start =0
+        end = len(num) - 1
+        
+        while start<=end:
+            if num[end] not in mymap or num[start] not in mymap:
+                return False
+            if num[start] != mymap[num[end]]:
+                return False
+            start=start+1
+            end=end-1
+            
+        return True
+        
+        """
+        :type num: str
+        :rtype: bool
+        """
