@@ -1,0 +1,52 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def root_to_leaf_paths(self,root,curr,ans):
+        if root==None:
+            return
+        curr.append(root.val)
+        if root.left == None and root.right == None:
+            ans.append(curr)
+            return
+        self.root_to_leaf_paths(root.left,curr[:],ans)
+        self.root_to_leaf_paths(root.right,curr[:],ans)
+    
+    def palindromic_paths(self,ans):
+        n = len(ans)
+        count = 0
+        for i in range(0,n):
+            curr = ans[i]
+            mymap = {}
+            for j in range(0,len(curr)):
+                if curr[j] in mymap:
+                    mymap[curr[j]] = mymap[curr[j]] + 1
+                else:
+                    mymap[curr[j]] = 1
+            no_of_odd = 0
+            for value in mymap.values():
+                if value%2!=0:
+                    no_of_odd=no_of_odd + 1
+            if no_of_odd <= 1:
+                count = count +1
+        return count
+
+    def pseudoPalindromicPaths (self, root):
+        if root == None:
+            return 0
+        if root.left == None and root.right == None:
+            return 1
+        curr=[]
+        ans=[]
+        self.root_to_leaf_paths(root,curr,ans)
+        print(ans)
+        count = self.palindromic_paths(ans)
+        return count
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        
