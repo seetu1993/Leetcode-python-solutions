@@ -1,0 +1,23 @@
+class Solution(object):
+    def countSquares(self, matrix):
+        rows = len(matrix)
+        columns = len(matrix[0])
+        
+        dp = [[0 for i in range(columns)] for j in range(rows)]
+        ans = 0
+        for i in range(0,rows):
+            for j in range(0,columns):
+                if i ==0 or j ==0:
+                    dp[i][j] = matrix[i][j]
+                    ans = ans + dp[i][j]
+                elif matrix[i][j] == 0:
+                    dp[i][j] = 0
+                else:
+                    dp[i][j] = 1 + min(dp[i-1][j-1], dp[i-1][j],dp[i][j-1])
+                    ans = ans + dp[i][j]
+        return ans
+        """
+        :type matrix: List[List[int]]
+        :rtype: int
+        """
+        
